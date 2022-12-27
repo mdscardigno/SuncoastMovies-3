@@ -2,6 +2,7 @@ namespace SuncoastMovies
 {
     public class Movie
     {
+        //names will align with the database table
         public int Id { get; set; }
         public string Title { get; set; }
         public string PrimaryDirector { get; set; }
