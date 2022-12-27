@@ -49,6 +49,20 @@ namespace SuncoastMovies
             //but at the SQL level, we are working with a SELECT COUNT(*) FROM Movies; query
             //EF Core is doing the work of translating our C# code into SQL for us and returning us the data we need.
 
+            //to see all the movies
+            //foreach(var dino in dinos)
+            //{
+            //    Console.WriteLine(dino.Name);
+            //}
+
+            //The code bellow is conceptually like: SELECT * FROM Movies;
+
+            foreach (var movie in context.Movies)//Movies is my property in a set related to my DbSet Movie class
+            {
+                //we receive instances of the Movie class we can use to output information such as each movie object's title: movie.Title
+                Console.WriteLine($"There is a movie named {movie.Title}.");
+            }
+
         }
     }
 }
