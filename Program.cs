@@ -45,7 +45,7 @@ namespace SuncoastMovies
             Console.WriteLine("There are " + movieCount + " movies in the database");
             //kind of like SELECT COUNT(*) FROM Movies; in our database
             //this is a perfect example of a ORM
-            //At the C# level, we are working with a DbSet and the Count() method from LINQ
+            //At the C# level, we are working with a DbSet (which is kind of like a fancy list) and the Count() method from LINQ
             //but at the SQL level, we are working with a SELECT COUNT(*) FROM Movies; query
             //EF Core is doing the work of translating our C# code into SQL for us and returning us the data we need.
 
