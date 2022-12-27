@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
 namespace SuncoastMovies
 {
     public class SuncoastMoviesContext : DbContext
@@ -11,6 +13,10 @@ namespace SuncoastMovies
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("server=localhost;database=SuncoastMovies");
+
+            //This will tell Entity Framework to log all the SQL it is generating to the console
+            var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            optionsBuilder.UseLoggerFactory(loggerFactory);
         }
     }
 }
