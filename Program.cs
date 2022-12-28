@@ -117,7 +117,7 @@ namespace SuncoastMovies
             // context.Movies.Add(otherNewMovie);//adding a movie
             // context.SaveChanges();//saving the changes
 
-            //
+            //TWO INSERTS TOGETHER
             var newMovie = new Movie
             {
                 Title = "SpaceBalls",
@@ -139,6 +139,38 @@ namespace SuncoastMovies
             context.Movies.Add(newMovie);//adding a movie
             context.Movies.Add(otherNewMovie);//adding a movie
             context.SaveChanges();//saving the changes
+
+
+            //UPDATING
+            // Search for a movie by name. FirstOrDefault takes a function to use to compare the movies and returns the first record that matches, or if nothing matches, returns null.
+            // This is the same as we used with LINQ against a List, but this time it is searching the database.
+            //firstOrDefault generates a WHERE clause
+            //SELECT * FROM "Movies" WHERE "Movies"."Title" = 'SpaceBalls';
+            var existingMovie = context.Movies.FirstOrDefault(movie => movie.Title == "SpaceBalls");
+
+            // If we found an existing movie.
+            if (existingMovie != null)
+            {
+                // Change the title of this movie.
+                existingMovie.Title = "SpaceBalls - the best movie ever";
+
+                // Ask the context to save changes.
+                //UPDATE "Movies" SET "Title" = 'SpaceBalls - the best movie ever' WHERE "Movies"."Id" = ------;
+                context.SaveChanges();
+            }
+
+            //DELETING
+            var existingMovieToDelete = context.Movies.FirstOrDefault(movie => movie.Title == "Cujo");
+
+            // If we found an existing movie.
+            if (existingMovieToDelete != null)
+            {
+                // Remove the existing movie from the collection
+                context.Movies.Remove(existingMovieToDelete);
+
+                // Ask the context to save changes, in this case deleting the record.
+                context.SaveChanges();
+            }
         }
     }
 }
