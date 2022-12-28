@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SuncoastMovies
 {
@@ -55,12 +56,29 @@ namespace SuncoastMovies
             //    Console.WriteLine(dino.Name);
             //}
 
-            //The code bellow is conceptually like: SELECT * FROM Movies;
+            //If we want to get the movies and their ratings:
+            //JOIN
+            //This comes from EnTIty Framework Core
+            //
+            // E.G.: For every Movie object we also get its associated Rating object  
+            //                                      JOIN            Rating
+            //                                      |               |  
+            var moviesWithRatings = context.Movies.Include(movie => movie.Rating);
 
-            foreach (var movie in context.Movies)//Movies is my property in a set related to my DbSet Movie class
+
+
+            //The code bellow is conceptually like: SELECT * FROM Movies;
+            foreach (var movie in moviesWithRatings)//Movies is my property in a set related to my DbSet Movie class
             {
-                //we receive instances of the Movie class we can use to output information such as each movie object's title: movie.Title
-                Console.WriteLine($"There is a movie named {movie.Title}.");
+                if (movie.Rating == null)
+                {
+                    Console.WriteLine($"There is a movie named {movie.Title} - No Rating.");
+                }
+                else
+                {
+                    //we receive instances of the Movie class we can use to output information such as each movie object's title: movie.Title
+                    Console.WriteLine($"There is a movie named {movie.Title} - {movie.Rating.Description}.");
+                }
             }
 
         }
