@@ -93,6 +93,52 @@ namespace SuncoastMovies
                 }
             }
 
+            //two INSERTS
+            // var newMovie = new Movie
+            // {
+            //     Title = "SpaceBalls",
+            //     PrimaryDirector = "Mel Brooks",
+            //     Genre = "Comedy",
+            //     YearReleased = 1987,
+            //     RatingId = 2
+            // };
+            // context.Movies.Add(newMovie);//adding a movie
+            // context.SaveChanges();//saving the changes
+
+            // var otherNewMovie = new Movie
+            // {
+            //     Title = "Real Genius",
+            //     PrimaryDirector = "I don't know",
+            //     Genre = "Comedy",
+            //     YearReleased = 1987,
+            //     RatingId = 2
+            // };
+
+            // context.Movies.Add(otherNewMovie);//adding a movie
+            // context.SaveChanges();//saving the changes
+
+            //
+            var newMovie = new Movie
+            {
+                Title = "SpaceBalls",
+                PrimaryDirector = "Mel Brooks",
+                Genre = "Comedy",
+                YearReleased = 1987,
+                RatingId = 2
+            };
+
+            var otherNewMovie = new Movie
+            {
+                Title = "Real Genius",
+                PrimaryDirector = "I don't know",
+                Genre = "Comedy",
+                YearReleased = 1987,
+                RatingId = 2
+            };
+
+            context.Movies.Add(newMovie);//adding a movie
+            context.Movies.Add(otherNewMovie);//adding a movie
+            context.SaveChanges();//saving the changes
         }
     }
 }
