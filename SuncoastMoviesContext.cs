@@ -7,8 +7,8 @@ namespace SuncoastMovies
     {
         public DbSet<Movie> Movies { get; set; }// a property of our database context
         public DbSet<Rating> Ratings { get; set; }// a property of our database context
-        public DbSet<Actor> Actors { get; set; }// a property of our database context
         public DbSet<Role> Roles { get; set; }// a property of our database context
+        public DbSet<Actor> Actors { get; set; }// a property of our database context
 
         //boilerplate code
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

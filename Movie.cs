@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+
 namespace SuncoastMovies
 {
     public class Movie
     {
         //names will align with the database table
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string Title { get; set; }//When we ask for Title, we will get back a string
         public string PrimaryDirector { get; set; }
         public int YearReleased { get; set; }
         public string Genre { get; set; }
@@ -19,9 +21,10 @@ namespace SuncoastMovies
         //       |      Name of the property or this movie rating
         //       |      |    
         //       v      v
-        public Rating Rating { get; set; }
+        public Rating Rating { get; set; }//When we ask for Rating, we will get back a Rating object
 
-        public List<Role> Roles { get; set; }
-
+        //One to Many Relationship from Movie => Role
+        public List<Role> Roles { get; set; }//When we ask for Roles, we will get back a list of Role objects
+        //a movie is related to a Rating and to a Role
     }
 }
