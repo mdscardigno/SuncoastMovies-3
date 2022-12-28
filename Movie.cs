@@ -21,5 +21,7 @@ namespace SuncoastMovies
         //       v      v
         public Rating Rating { get; set; }
 
+        public List<Role> Roles { get; set; }
+
     }
 }
